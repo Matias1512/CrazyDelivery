@@ -71,7 +71,10 @@ public class QuestManager : MonoBehaviour
 
         // vitesse du joueur a ajouter ici 
         float timeToAdd = Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, target.transform.position) / 5f;
+
+        this.gameObject.GetComponent<MiniMap>().cible = target;
         // now call the method for add to the timeManager
+        this.gameObject.GetComponent<TimeBarre>().AddTime(timeToAdd);
 
     }
 
