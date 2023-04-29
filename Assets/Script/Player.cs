@@ -4,42 +4,49 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float maxSpeed = 10f; // Vitesse de déplacement du joueur
+    public float acceleration = 5f; // Accélération du joueur
+    public float deceleration = 2; // Décélération du joueur
 
-    private Rigidbody2D rb2d;
-    private Transform tr;
-    public float speed = 1f;
-    public float maxSpeed = 5f;
-    // Start is called before the first frame update
+    private Rigidbody2D rb; // Référence au rigidbody du joueur
+    private Vector2 movement; // Vecteur de déplacement du joueur
+
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
-        tr = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void FixedUpdate()
-    {
+        // Lecture des touches de déplacement
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        
+        // Calcul du vecteur de déplacement
+        Vector2 inputMovement = new Vector2(moveHorizontal, moveVertical);
 
-        if (rb2d.velocity.magnitude < maxSpeed)
+        // Si l'entrée de mouvement est différente de zéro, ajoute l'accélération
+        if (inputMovement.magnitude != 0f)
         {
-            movement *= speed;
+            movement += inputMovement.normalized * acceleration * Time.deltaTime;
         }
-        rb2d.AddForce(movement);
-
-        if (rb2d.velocity.magnitude > 0.1f)
+        // Sinon, applique une décélération pour ralentir le joueur
+        else
         {
-            float angle = Mathf.Atan2(rb2d.velocity.y, rb2d.velocity.x) * Mathf.Rad2Deg;
-            tr.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            movement = Vector2.Lerp(movement, Vector2.zero, deceleration * Time.deltaTime);
+        }
+
+        // Limite la vitesse maximale
+        movement = Vector2.ClampMagnitude(movement, maxSpeed);
+
+        // Applique le vecteur de déplacement sur le rigidbody
+        rb.velocity = movement;
+
+        // Tourne le joueur en fonction de la direction de déplacement
+        if (movement.magnitude > 0f)
+        {
+            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 }
