@@ -5,31 +5,20 @@ using UnityEngine.UI;
 
 public class TimeBarre : MonoBehaviour
 {
-    private float timeCourseMax = 20;
-    public float timeCourse = 20;
-    public Image barre;
+    
+    public float timeCourse = 70;
+  
     public bool startGame = true;
     public Text timeText;
-
+    public float timeAjout;
+    public GameObject ajoutTimeText;
 
     void Start()
     {
-        timeCourseMax = timeCourse;
+        
         StartCoroutine(timer());
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (startGame == true)
-        {
-
-            barre.fillAmount -= 1.0f / timeCourseMax * Time.deltaTime;
-           
-        }
-
-    }
 
 
     IEnumerator timer()
@@ -40,9 +29,39 @@ public class TimeBarre : MonoBehaviour
             
             timeCourse--;
             yield return new WaitForSeconds(1f);
-            timeText.text = "Time : " + timeCourse + " s";
+            //timeText.text = "Time : " + timeCourse + " s";
+            timeText.text = "Time : " + string.Format("{0:0}:{1:00}", Mathf.Floor (timeCourse/60), timeCourse%60)  + " s";
+            MajColor(timeCourse);
         }
 
+    }
+
+    private void MajColor(float currentTime)
+    {
+
+        if(currentTime < 10)
+        {
+            timeText.color = Color.red;
+        }
+        else if (currentTime > 10 && currentTime < 50)
+        {
+            timeText.color = Color.yellow;
+        }
+
+    }
+
+    public void AddTime(float addTime)
+    {
+
+        timeCourse = timeCourse + addTime;
+        ajoutTimeText.SetActive(true);
+        ajoutTimeText.GetComponent<Text>().text = "+ " + addTime + " s";
+        Invoke("AddTimeUI", 2.0f);
+    }
+
+    private void AddTimeUI()
+    {
+        ajoutTimeText.SetActive(false);
     }
 
 
