@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
         moveVertical = Input.GetAxis("Vertical");
     }
 
-
     void FixedUpdate()
     {
         // Calcul du vecteur de déplacement
@@ -54,5 +53,15 @@ public class Player : MonoBehaviour
             float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
+    }
+
+    public void SetSlowdownFactor(float slowdownFactor)
+    {
+        movement = new Vector2(moveHorizontal * slowdownFactor, moveVertical * slowdownFactor);
+    }
+
+    public void ResetSlowdownFactor()
+    {
+        movement = new Vector2(moveHorizontal, moveVertical);
     }
 }
