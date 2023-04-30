@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb; // Référence au rigidbody du joueur
     private Vector2 movement; // Vecteur de déplacement du joueur
 
+    float moveHorizontal;
+    float moveVertical;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,17 +21,20 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // Lecture des touches de déplacement
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        moveHorizontal = Input.GetAxis("Horizontal");
+        moveVertical = Input.GetAxis("Vertical");
+    }
 
+
+    void FixedUpdate()
+    {
         // Calcul du vecteur de déplacement
         Vector2 inputMovement = new Vector2(moveHorizontal, moveVertical);
 
         // Si l'entrée de mouvement est différente de zéro, ajoute l'accélération
         if (inputMovement.magnitude != 0f)
         {
-            movement += inputMovement.normalized * acceleration * Time.deltaTime;
+            movement += inputMovement;
         }
         // Sinon, applique une décélération pour ralentir le joueur
         else
