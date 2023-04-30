@@ -58,6 +58,7 @@ public class TimeBarre : MonoBehaviour
 
     }
 
+    //TIME
     public void AddTime(float addTime)
     {
 
@@ -79,6 +80,7 @@ public class TimeBarre : MonoBehaviour
         ajoutTimeText.SetActive(false);
     }
 
+    //WIN
     public void VictoryDelivery()
     {
         victoryUI.SetActive(true);
