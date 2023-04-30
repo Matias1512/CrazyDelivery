@@ -7,6 +7,7 @@ TagManager:
   - building
   - client
   - GM
+  - box
   layers:
   - Default
   - TransparentFX
