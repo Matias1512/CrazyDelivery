@@ -12,11 +12,19 @@ public class TimeBarre : MonoBehaviour
     public Text timeText;
     public float timeAjout;
     public GameObject ajoutTimeText;
+    private GameObject victoryUI;
+    private GameObject winUI;
 
     void Start()
     {
         
         StartCoroutine(timer());
+        victoryUI = GameObject.Find("Victory");
+        victoryUI.SetActive(false);
+
+        winUI = GameObject.Find("Win");
+        winUI.SetActive(false);
+
     }
 
 
@@ -54,15 +62,52 @@ public class TimeBarre : MonoBehaviour
     {
 
         timeCourse = timeCourse + addTime;
-        ajoutTimeText.SetActive(true);
         ajoutTimeText.GetComponent<Text>().text = "+ " + addTime + " s";
-        Invoke("AddTimeUI", 2.0f);
+        Invoke("AddTimeUI", 0f);
+        Invoke("AddTimeUIEnd", 2.5f);
     }
 
-    private void AddTimeUI()
+    void AddTimeUI()
+    {
+        ajoutTimeText.SetActive(true);
+        
+        
+    } 
+
+    private void AddTimeUIEnd()
     {
         ajoutTimeText.SetActive(false);
     }
+
+    public void VictoryDelivery()
+    {
+        victoryUI.SetActive(true);
+        
+        Invoke("VictoryDeliveryEnd", 2f);
+
+    }
+
+    void VictoryDeliveryEnd()
+    {
+
+        victoryUI.SetActive(false);
+
+    }
+
+    public void WinUI()
+    {
+        winUI.SetActive(true);
+        Invoke("WinUIEnd", 2f);
+
+    }
+
+    void WinUIEnd()
+    {
+        winUI.SetActive(false);
+
+    }
+
+
 
 
 }
