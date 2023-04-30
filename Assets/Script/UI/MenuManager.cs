@@ -7,7 +7,9 @@ public class MenuManager : MonoBehaviour
 {
     #region Attributes
 
-    public Animator boxAnimation;
+    private Animator boxAnimation;
+    public GameObject startPressed;
+    public GameObject quitPressed;
 
     #endregion
     // Start is called before the first frame update
@@ -18,17 +20,21 @@ public class MenuManager : MonoBehaviour
     }
     public void goExit()
     {
+        GameObject.Find("quit").SetActive(false);
+        quitPressed.SetActive(true);
         Application.Quit();
     }
 
     public void goStart()
     {
-        this.boxAnimation.SetBool("isPlayPressed", true);
-        //SceneManager.LoadScene("Intro");
+        boxAnimation.SetBool("isPlayPressed", true);
+        GameObject.Find("start").SetActive(false);
+        startPressed.SetActive(true);
     }
 
     public void goCredit()
     {
+
         SceneManager.LoadScene("Credit");
     }
 }
