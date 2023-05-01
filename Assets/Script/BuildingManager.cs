@@ -20,7 +20,7 @@ public class BuildingManager : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             // Quest completed get a new quest !
-            gmQuestManager.GetQuest(true);
+            gmQuestManager.SuccessDelivery(true);
         }
     }
 

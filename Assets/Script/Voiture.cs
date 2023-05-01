@@ -27,7 +27,6 @@ public class Voiture : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("aaaa");
         if (collision.gameObject.transform == target)
         {
             indextarget ++;

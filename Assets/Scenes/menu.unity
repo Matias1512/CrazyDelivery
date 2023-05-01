@@ -695,6 +695,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextAnimation: {fileID: 1895007893}
+  uiVictory: {fileID: 0}
+  uiCheck: {fileID: 0}
 --- !u!1 &1334967122
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +973,7 @@ Animator:
   m_GameObject: {fileID: 1830000988}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bf790199afa99d42a2bd87c4a3d0f37, type: 2}
+  m_Controller: {fileID: 9100000, guid: cd920261961aef843b787d98f065c82a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -995,6 +997,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextAnimation: {fileID: 1307631150}
+  uiVictory: {fileID: 0}
+  uiCheck: {fileID: 0}
 --- !u!1 &1844117379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,6 +1244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextAnimation: {fileID: 1830000988}
+  uiVictory: {fileID: 0}
+  uiCheck: {fileID: 0}
 --- !u!1 &1921522376
 GameObject:
   m_ObjectHideFlags: 0

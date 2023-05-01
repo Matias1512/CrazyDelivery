@@ -10,7 +10,7 @@ public class SlotBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SlotUI = GameObject.Find("Colit");
+        SlotUI = GameObject.Find("Colis");
         SlotUI.SetActive(false);
 
     }

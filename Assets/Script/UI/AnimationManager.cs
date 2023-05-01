@@ -7,6 +7,8 @@ public class AnimationManager : MonoBehaviour
 {
 
     public GameObject nextAnimation;
+    public GameObject uiVictory;
+    public GameObject uiCheck;
 
     public void PlayNextAnimation()
     {
@@ -15,6 +17,12 @@ public class AnimationManager : MonoBehaviour
     
     public void ChangeScene()
     {
-        //SceneManager.LoadScene("sayo_test");
+        SceneManager.LoadScene("Game");
+    }
+
+    public void deactivateVictory()
+    {
+        uiVictory.SetActive(false);
+        uiCheck.SetActive(false);
     }
 }
