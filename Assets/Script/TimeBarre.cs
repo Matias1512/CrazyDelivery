@@ -31,7 +31,7 @@ public class TimeBarre : MonoBehaviour
             timeCourse--;
             yield return new WaitForSeconds(1f);
             //timeText.text = "Time : " + timeCourse + " s";
-            timeText.text = "Time : " + string.Format("{0:0}:{1:00}", Mathf.Floor (timeCourse/60), timeCourse%60)  + " s";
+            timeText.text = "" + string.Format("{0:0}:{1:00}", Mathf.Floor (timeCourse/60), timeCourse%60)  + " s";
             MajColor(timeCourse);
         }
 
