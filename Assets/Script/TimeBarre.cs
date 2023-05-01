@@ -12,13 +12,14 @@ public class TimeBarre : MonoBehaviour
     public Text timeText;
     public float timeAjout;
     public GameObject ajoutTimeText;
+    
 
     void Start()
     {
         
         StartCoroutine(timer());
+        
     }
-
 
 
     IEnumerator timer()
@@ -30,7 +31,7 @@ public class TimeBarre : MonoBehaviour
             timeCourse--;
             yield return new WaitForSeconds(1f);
             //timeText.text = "Time : " + timeCourse + " s";
-            timeText.text = "Time : " + string.Format("{0:0}:{1:00}", Mathf.Floor (timeCourse/60), timeCourse%60)  + " s";
+            timeText.text = "" + string.Format("{0:0}:{1:00}", Mathf.Floor (timeCourse/60), timeCourse%60)  + " s";
             MajColor(timeCourse);
         }
 
@@ -50,19 +51,31 @@ public class TimeBarre : MonoBehaviour
 
     }
 
+    //TIME
     public void AddTime(float addTime)
     {
 
         timeCourse = timeCourse + addTime;
-        ajoutTimeText.SetActive(true);
         ajoutTimeText.GetComponent<Text>().text = "+ " + addTime + " s";
-        Invoke("AddTimeUI", 2.0f);
+        Invoke("AddTimeUI", 0f);
+        Invoke("AddTimeUIEnd", 2.5f);
     }
 
-    private void AddTimeUI()
+    void AddTimeUI()
+    {
+        ajoutTimeText.SetActive(true);
+        
+    } 
+
+    private void AddTimeUIEnd()
     {
         ajoutTimeText.SetActive(false);
     }
+
+    
+    
+
+
 
 
 }
