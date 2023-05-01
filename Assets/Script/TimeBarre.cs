@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimeBarre : MonoBehaviour
 {
@@ -12,13 +13,17 @@ public class TimeBarre : MonoBehaviour
     public Text timeText;
     public float timeAjout;
     public GameObject ajoutTimeText;
-    
+    public GameObject loseUI;
+    private QuestManager questManager;
+    public GameObject camion;
 
     void Start()
     {
         
         StartCoroutine(timer());
-        
+        questManager = this.GetComponent<QuestManager>();
+
+
     }
 
 
@@ -31,7 +36,16 @@ public class TimeBarre : MonoBehaviour
             timeCourse--;
             yield return new WaitForSeconds(1f);
             //timeText.text = "Time : " + timeCourse + " s";
-            timeText.text = "" + string.Format("{0:0}:{1:00}", Mathf.Floor (timeCourse/60), timeCourse%60)  + " s";
+
+            if(timeCourse <= 0)
+            {
+                timeText.text = "";
+            }
+            else
+            {
+                timeText.text = "" + string.Format("{0:0}:{1:00}", Mathf.Floor(timeCourse / 60), timeCourse % 60) + " s";
+            }
+            
             MajColor(timeCourse);
         }
 
@@ -43,11 +57,20 @@ public class TimeBarre : MonoBehaviour
         if(currentTime < 10)
         {
             timeText.color = Color.red;
-        }
-        else if (currentTime > 10 && currentTime < 50)
+        }else if (currentTime > 10 && currentTime < 50)
         {
             timeText.color = Color.yellow;
         }
+        
+        if(currentTime <= 0)
+        {
+            
+            loseUI.SetActive(true);
+            // Time.timeScale = 0;
+            camion.SetActive(false);
+        }
+
+
 
     }
 
@@ -72,7 +95,17 @@ public class TimeBarre : MonoBehaviour
         ajoutTimeText.SetActive(false);
     }
 
-    
+    public void Retry()
+    {
+
+        SceneManager.LoadScene("Game");
+
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("menu");
+    }
     
 
 
