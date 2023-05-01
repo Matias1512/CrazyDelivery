@@ -12081,6 +12081,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 5389056197242826053, guid: 89cdd6a7d30e243439d90d4a90c9ca37, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5389056197242826054, guid: 89cdd6a7d30e243439d90d4a90c9ca37, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -34941,7 +34945,7 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 1313196215255757720, guid: 0d98c6b2ce6775b438ae59ff34a005f2, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1313196215255757724, guid: 0d98c6b2ce6775b438ae59ff34a005f2, type: 3}
       propertyPath: m_Name
@@ -35419,6 +35423,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2775395080437061004, guid: 8143967aa8183bd49aff6b2dc6f62bfe, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2775395080437061005, guid: 8143967aa8183bd49aff6b2dc6f62bfe, type: 3}
       propertyPath: m_Pivot.x
       value: 0
