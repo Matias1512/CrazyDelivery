@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e5d255b1948d0408b98ebb079a0bce, type: 3}
   m_Name: DocDo
   m_EditorClassIdentifier: 
-  name: Grec'Do
+  name: Doc'Do
   artwork: {fileID: 0}
-  position: {x: -6.45, y: 3.26, z: 0}
+  position: {x: 16.943468, y: 11.012072, z: 0}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Client
   artwork: {fileID: 0}
-  position: {x: 7.3, y: 0.82, z: 0.03512054}
+  position: {x: 0, y: 0, z: 0}

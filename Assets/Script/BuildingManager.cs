@@ -11,15 +11,24 @@ public class BuildingManager : MonoBehaviour
     void Start()
     {
         buildingInformation.position = this.transform.position;
-        gmQuestManager = GameObject.FindGameObjectWithTag("GM").GetComponent<QuestManager>();
+        gmQuestManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<QuestManager>();
     }
 
-    public void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" && gmQuestManager.currentQuest.buildingInfo.position == this.buildingInformation.position)
         {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
             // Quest completed get a new quest !
-            gmQuestManager.GetQuest(true);
+            gmQuestManager.SuccessDelivery(true);
+        }
+    }
+
+    void Update()
+    {
+        if (gmQuestManager.currentQuest.buildingInfo.position == this.buildingInformation.position)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 }
